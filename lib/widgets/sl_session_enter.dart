@@ -242,7 +242,7 @@ class _SlSessionEnterWidgetState extends State<SlSessionEnterWidget> {
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: const [
                 Text(
                   "You dont hav an account? ",
                   style: TextStyle(

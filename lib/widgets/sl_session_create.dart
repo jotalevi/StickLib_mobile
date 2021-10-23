@@ -331,7 +331,7 @@ class _SlSessionCreateWidgetState extends State<SlSessionCreateWidget> {
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: const [
                 Text(
                   "Already have an account? ",
                   style: TextStyle(

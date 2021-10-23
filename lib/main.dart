@@ -7,16 +7,16 @@ import 'package:stick_lib/pages/sl_sessions.page.dart';
 import 'classes/sessions.dart';
 
 void main() {
-  Sessions.MOCK_load(false);
+  Sessions.load();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute: Sessions.hasAccount() ? '/' : '/sessions',
     routes: {
-      '/': (context) => SlHomePage(),
-      '/sessions': (context) => SlSessionsPage(),
-      '/profile': (context) => SlProfilePage(),
-      '/creator': (context) => SlCreatorPage(),
-      '/pack': (context) => SlPackPage(),
+      '/': (context) => const SlHomePage(),
+      '/sessions': (context) => const SlSessionsPage(),
+      '/profile': (context) => const SlProfilePage(),
+      '/creator': (context) => const SlCreatorPage(),
+      '/pack': (context) => const SlPackPage(),
     },
   ));
 }
