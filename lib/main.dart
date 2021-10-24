@@ -17,6 +17,7 @@ void main() {
       '/profile': (context) => const SlProfilePage(),
       '/creator': (context) => const SlCreatorPage(),
       '/pack': (context) => const SlPackPage(),
+      '/loadLogin': (context) => const SlLoadingLoginPage(),
     },
   ));
 }

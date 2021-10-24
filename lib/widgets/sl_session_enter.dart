@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stick_lib/classes/constants.dart';
+import 'package:stick_lib/classes/sessions.dart';
 
 class SlSessionEnterWidget extends StatefulWidget {
   const SlSessionEnterWidget({
@@ -14,6 +15,17 @@ class SlSessionEnterWidget extends StatefulWidget {
 }
 
 class _SlSessionEnterWidgetState extends State<SlSessionEnterWidget> {
+  final TextEditingController userController = TextEditingController();
+  final TextEditingController passController = TextEditingController();
+
+  Future<void> attemptCreateUser() async {
+    Sessions.mail = userController.text;
+    Sessions.pass = passController.text;
+    Sessions.acts = 'enter';
+
+    Navigator.pushNamed(context, '/loadLogin');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -67,6 +79,7 @@ class _SlSessionEnterWidgetState extends State<SlSessionEnterWidget> {
                 right: 10,
               ),
               child: TextField(
+                controller: userController,
                 cursorColor: ColorsLight.PRIMARY,
                 style: const TextStyle(
                   color: ColorsLight.PRIMARY,
@@ -74,7 +87,7 @@ class _SlSessionEnterWidgetState extends State<SlSessionEnterWidget> {
                   fontWeight: FontWeight.w400,
                 ),
                 decoration: InputDecoration(
-                    labelText: "Mail Address",
+                    labelText: "Username",
                     border: InputBorder.none,
                     errorBorder: InputBorder.none,
                     enabledBorder: InputBorder.none,
@@ -112,12 +125,15 @@ class _SlSessionEnterWidgetState extends State<SlSessionEnterWidget> {
                 right: 10,
               ),
               child: TextField(
+                controller: passController,
                 cursorColor: ColorsLight.PRIMARY,
                 style: const TextStyle(
                   color: ColorsLight.PRIMARY,
                   fontSize: 18,
                   fontWeight: FontWeight.w400,
                 ),
+                obscureText: true,
+                obscuringCharacter: '•',
                 decoration: InputDecoration(
                     labelText: "Password",
                     border: InputBorder.none,
@@ -162,7 +178,7 @@ class _SlSessionEnterWidgetState extends State<SlSessionEnterWidget> {
               top: 10,
             ),
           ),
-          SizedBox(
+          /*SizedBox(
             width: 300,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -230,7 +246,7 @@ class _SlSessionEnterWidgetState extends State<SlSessionEnterWidget> {
                 ),
               ],
             ),
-          ),
+          ),*/
           const Padding(
             padding: EdgeInsets.only(
               top: 10,
@@ -244,7 +260,7 @@ class _SlSessionEnterWidgetState extends State<SlSessionEnterWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
                 Text(
-                  "You dont hav an account? ",
+                  "You dont have an account? ",
                   style: TextStyle(
                     color: ColorsLight.PRIMARY,
                   ),

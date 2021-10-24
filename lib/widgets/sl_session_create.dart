@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stick_lib/classes/constants.dart';
+import 'package:stick_lib/classes/sessions.dart';
 
 class SlSessionCreateWidget extends StatefulWidget {
   const SlSessionCreateWidget({
@@ -14,6 +15,19 @@ class SlSessionCreateWidget extends StatefulWidget {
 }
 
 class _SlSessionCreateWidgetState extends State<SlSessionCreateWidget> {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController mailController = TextEditingController();
+  final TextEditingController passController = TextEditingController();
+
+  Future<void> attemptCreateUser() async {
+    Sessions.user = nameController.text;
+    Sessions.mail = mailController.text;
+    Sessions.pass = passController.text;
+    Sessions.acts = 'create';
+
+    Navigator.pushNamed(context, '/loadLogin');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -66,6 +80,7 @@ class _SlSessionCreateWidgetState extends State<SlSessionCreateWidget> {
                 right: 10,
               ),
               child: TextField(
+                controller: nameController,
                 cursorColor: ColorsLight.PRIMARY,
                 style: const TextStyle(
                   color: ColorsLight.PRIMARY,
@@ -73,7 +88,7 @@ class _SlSessionCreateWidgetState extends State<SlSessionCreateWidget> {
                   fontWeight: FontWeight.w400,
                 ),
                 decoration: InputDecoration(
-                    labelText: "Name",
+                    labelText: "Username",
                     border: InputBorder.none,
                     errorBorder: InputBorder.none,
                     enabledBorder: InputBorder.none,
@@ -111,6 +126,7 @@ class _SlSessionCreateWidgetState extends State<SlSessionCreateWidget> {
                 right: 10,
               ),
               child: TextField(
+                controller: mailController,
                 cursorColor: ColorsLight.PRIMARY,
                 style: const TextStyle(
                   color: ColorsLight.PRIMARY,
@@ -156,12 +172,15 @@ class _SlSessionCreateWidgetState extends State<SlSessionCreateWidget> {
                 right: 10,
               ),
               child: TextField(
+                controller: passController,
                 cursorColor: ColorsLight.PRIMARY,
                 style: const TextStyle(
                   color: ColorsLight.PRIMARY,
                   fontSize: 18,
                   fontWeight: FontWeight.w400,
                 ),
+                obscureText: true,
+                obscuringCharacter: '•',
                 decoration: InputDecoration(
                     labelText: "Password",
                     border: InputBorder.none,
@@ -207,6 +226,8 @@ class _SlSessionCreateWidgetState extends State<SlSessionCreateWidget> {
                   fontSize: 18,
                   fontWeight: FontWeight.w400,
                 ),
+                obscureText: true,
+                obscuringCharacter: '•',
                 decoration: InputDecoration(
                     labelText: "Confirm Password",
                     border: InputBorder.none,
@@ -235,13 +256,18 @@ class _SlSessionCreateWidgetState extends State<SlSessionCreateWidget> {
                 5,
               ),
             ),
-            child: const Center(
-              child: Text(
-                'SignUp',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 36,
-                  fontWeight: FontWeight.w400,
+            child: InkWell(
+              onTap: () {
+                attemptCreateUser();
+              },
+              child: const Center(
+                child: Text(
+                  'SignUp',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 36,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
             ),
@@ -251,7 +277,7 @@ class _SlSessionCreateWidgetState extends State<SlSessionCreateWidget> {
               top: 10,
             ),
           ),
-          SizedBox(
+          /*SizedBox(
             width: 300,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -319,7 +345,7 @@ class _SlSessionCreateWidgetState extends State<SlSessionCreateWidget> {
                 ),
               ],
             ),
-          ),
+          ),*/
           const Padding(
             padding: EdgeInsets.only(
               top: 10,
