@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stick_lib/pages/sl_creator_page.dart';
 import 'package:stick_lib/pages/sl_home_page.dart';
+import 'package:stick_lib/pages/sl_loading_login_page.dart';
 import 'package:stick_lib/pages/sl_pack_page.dart';
 import 'package:stick_lib/pages/sl_profile_page.dart';
 import 'package:stick_lib/pages/sl_sessions.page.dart';
