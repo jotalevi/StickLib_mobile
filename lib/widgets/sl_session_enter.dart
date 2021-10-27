@@ -18,12 +18,12 @@ class _SlSessionEnterWidgetState extends State<SlSessionEnterWidget> {
   final TextEditingController userController = TextEditingController();
   final TextEditingController passController = TextEditingController();
 
-  Future<void> attemptCreateUser() async {
-    Sessions.mail = userController.text;
+  void attemptLoginUser() {
+    Sessions.user = userController.text;
     Sessions.pass = passController.text;
     Sessions.acts = 'enter';
 
-    Navigator.pushNamed(context, '/loadLogin');
+    Sessions.loadActs(context);
   }
 
   @override
@@ -153,22 +153,27 @@ class _SlSessionEnterWidgetState extends State<SlSessionEnterWidget> {
               top: 40,
             ),
           ),
-          Container(
-            width: 300,
-            height: 70,
-            decoration: BoxDecoration(
-              color: ColorsLight.ACCEPT,
-              borderRadius: BorderRadius.circular(
-                5,
+          InkWell(
+            onTap: () {
+              attemptLoginUser();
+            },
+            child: Container(
+              width: 300,
+              height: 70,
+              decoration: BoxDecoration(
+                color: ColorsLight.ACCEPT,
+                borderRadius: BorderRadius.circular(
+                  5,
+                ),
               ),
-            ),
-            child: const Center(
-              child: Text(
-                'SignIn',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 36,
-                  fontWeight: FontWeight.w400,
+              child: const Center(
+                child: Text(
+                  'SignIn',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 36,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
             ),

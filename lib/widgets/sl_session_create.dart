@@ -25,7 +25,7 @@ class _SlSessionCreateWidgetState extends State<SlSessionCreateWidget> {
     Sessions.pass = passController.text;
     Sessions.acts = 'create';
 
-    Navigator.pushNamed(context, '/loadLogin');
+    Sessions.loadActs(context);
   }
 
   @override
